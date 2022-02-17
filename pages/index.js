@@ -14,6 +14,7 @@ export async function getStaticProps() {
     props: {
       jeffPosts
     },
+    // Checks for new posts
     revalidate: 1,
   }
 }
@@ -30,9 +31,9 @@ export default function Home({ jeffPosts }) {
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
         <ul className={utilStyles.list}>
-          {jeffPosts.map(({ id, date, title }) => (
+          {jeffPosts.map(({ id, slug, date, title }) => (
             <li className={utilStyles.listItem} key={id}>
-              <Link href={`/posts/${id}`}>
+              <Link href={`/post/${slug}`}>
                 <a>{title}</a>
               </Link>
               <br />
